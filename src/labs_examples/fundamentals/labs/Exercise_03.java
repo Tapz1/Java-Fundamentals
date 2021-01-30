@@ -20,11 +20,25 @@ public class Exercise_03 {
 
         // write code to print out "Check out my first program!" below
         System.out.println("Check out my first program!");
-        int i = 10;
-        int x = 12;
-        int z = i + x;
 
-        System.out.println(z);
+        boolean trueVal = true;
+        boolean falseVal = false;
+        if (trueVal){
+            System.out.println("This will print - #4");
+        }
+        if (falseVal){
+            System.out.println("This will not print - #5");
+        }
+        if (trueVal && falseVal){
+            System.out.println("This will not print - #6");
+        }
+        if (trueVal ^ falseVal){
+            System.out.println("This will print - #7");
+        }
+        if (!falseVal){
+            System.out.println("This will print - #8");
+        }
+
     }
 
 

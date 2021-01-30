@@ -14,5 +14,18 @@ public class Exercise_06 {
 
         // write code here
 
+        System.out.println("The volume is: " + volumeOfCylinder(3.14, 5));
+        System.out.println("The surface area is: " + surfaceArea(3.14, 5));
+
+
+    }
+
+    public static double volumeOfCylinder(double radius, double height){
+        return (3.14 * (radius * radius) * height);
+
+    }
+
+    public static double surfaceArea(double radius, double height){
+        return((2 * 3.14 * radius * height) + (2 * 3.14 * (radius * radius)));
     }
 }

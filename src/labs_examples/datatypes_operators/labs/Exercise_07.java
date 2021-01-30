@@ -24,6 +24,10 @@ public class Exercise_07 {
         int days = scanner.nextInt();
 
         // write completed code here
+        System.out.println(days + " days = " + daysToSeconds(days) + " seconds!");
+    }
 
+    public static int daysToSeconds(int days){
+        return (days * 86400);
     }
 }

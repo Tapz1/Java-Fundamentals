@@ -25,5 +25,16 @@ public class Exercise_02 {
 
         // write code here
 
+        // widening
+        int a = 10;
+        double toDouble = a;
+        System.out.println(toDouble);
+
+        // narrowing
+        double b = 10.5;
+        int toInt = (int) b;
+        System.out.println(toInt);
+
+        // information is lost when narrowing
     }
 }
