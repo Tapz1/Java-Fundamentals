@@ -23,4 +23,17 @@ package labs_examples.conditions_loops.labs;
 
 public class Exercise_11 {
 
+    public static void main(String[] args) {
+
+        for(int i = 1; i <= 10; i++){
+            System.out.print(i + " |");
+
+            for(int x=2; x <= 10; x++){
+                int two = i * x;
+                System.out.print(two + " |");
+            }
+            System.out.println();
+        }
+    }
+
 }
