@@ -9,5 +9,17 @@ package labs_examples.arrays.labs;
  */
 
 public class Exercise_05 {
+    public static void main(String[] args) {
+        int[] array = new int[100];
 
+        for(int i=0; i < array.length; i++){
+            array[i] = i;
+        }
+
+        int counter = array.length-1;
+        while(counter > 0){
+            System.out.println(array[counter]);
+            counter -= 2;
+        }
+    }
 }

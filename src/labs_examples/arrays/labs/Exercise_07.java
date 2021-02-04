@@ -1,5 +1,8 @@
 package labs_examples.arrays.labs;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  *  ArrayLists
  *
@@ -10,4 +13,28 @@ package labs_examples.arrays.labs;
  *
  */
 public class Exercise_07 {
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<Integer>(30);
+
+        for(int i=0; i < 20; i++){
+            list.add(i*2);
+            System.out.print(list.get(i) + " | ");
+        }
+
+        list.remove(5);
+
+        System.out.print("\nHere's the updated list with no multiples of 3 & 5th index: ");
+        for(Integer newItems : list){
+            if(newItems % 3 == 0) {
+                continue;
+            }
+            System.out.print(newItems + " | ");
+
+        }
+
+
+
+
+    }
 }
