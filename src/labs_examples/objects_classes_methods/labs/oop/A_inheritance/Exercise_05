@@ -27,3 +27,6 @@ class Child extends Parent
     System.err.println("Child called");
   }
 }
+
+
+This wouldn't print anything because new Child c isn't called.

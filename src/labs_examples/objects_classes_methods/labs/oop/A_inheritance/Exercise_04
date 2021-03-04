@@ -27,3 +27,8 @@ class Child extends Parent
     System.err.println("Child called");
   }
 }
+
+This would print:
+
+Parent Called
+Child Called
