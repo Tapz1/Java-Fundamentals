@@ -29,6 +29,10 @@ public class BlackjackController {
         System.out.println("How much does the computer put in?");
         int compPot = input.nextInt();
 
+        Totals totals = new Totals();
+
+
+
 
         // loop of the game
         do {
@@ -71,6 +75,9 @@ public class BlackjackController {
             do {
                 /* continued dealing and game conclusion */
 
+                // adds to game counter
+                totals.games();
+
                 System.out.println(playerName + " do you want another card? (yes/no)");
                 String choice = input.next();
 
@@ -88,11 +95,13 @@ public class BlackjackController {
                         System.out.println(playerName + " won!");
                         playerPot += compBet;
                         compPot -= compBet;
+                        totals.wins("player");
                     } else if ((compHand.handValue <= 21 && compHand.handValue > playersHand.handValue) ||
                             (compHand.handValue <= 21 && playersHand.greaterThanTwentyOne(playersHand.handValue))) {
                         System.out.println("The computer has won!");
                         compPot += playerBet;
                         playerPot -= playerBet;
+                        totals.wins("computer");
                     }
                     // this if checks for second win scenario
                     if (playersHand.greaterThanTwentyOne(playersHand.handValue) &&
@@ -101,10 +110,12 @@ public class BlackjackController {
                             System.out.println("Congrats, " + playerName + ", you've won with the lesser hand!");
                             playerPot += compBet;
                             compPot -= compBet;
+                            totals.wins("player");
                         } else {
                             System.out.println("The computer has won!");
                             compPot += playerBet;
                             playerPot -= playerBet;
+                            totals.wins("computer");
                         }
                     }
                     System.out.println(playerName + " has now a total of $" + playerPot);
@@ -152,12 +163,40 @@ public class BlackjackController {
 
         if (playerPot == 0) {
             System.out.println("Great game, but " + playerName + " ran out of money! T_T");
+            totals.wins("computer");
         } else if (compPot == 0) {
             System.out.println("Great game, but the computer ran out of money!");
+            totals.wins("player");
         }
     }
 
 
+}
+
+class Totals{
+    /* counter for games and wins for each player*/
+
+    int gamesPlayed;
+    int compWins;
+    int playerWins;
+
+    public Totals(){
+        this.gamesPlayed = 0;
+        this.compWins = 0;
+        this.playerWins = 0;
+    }
+
+    public int wins(String player){
+        if(player.equals("computer")){
+            return this.compWins++;
+        }else{
+            return playerWins++;
+        }
+    }
+
+    public int games(){
+        return this.gamesPlayed++;
+    }
 }
 
 
