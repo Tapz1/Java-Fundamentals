@@ -12,6 +12,7 @@ public class PackageClassB {
 
         methodC(); // can be accessed within the same class
         methodD();
+
     }
 
     protected static void methodC(){

@@ -1,5 +1,7 @@
 package labs_examples.input_output.labs;
 
+import java.io.*;
+
 /**
  * Input/Output Exercise 2: File encryption
  *
@@ -12,3 +14,33 @@ package labs_examples.input_output.labs;
  *
  */
 
+public class Exercise_02 {
+
+    public static void main(String[] args) throws IOException {
+        String filePath = "C:\\Users\\chris\\Documents\\Coding\\CodingNomads\\labs\\online-java-fundamentals\\src\\labs_examples\\input_output\\files\\char_data.txt";
+        String writePath = "C:\\Users\\chris\\Documents\\Coding\\CodingNomads\\labs\\online-java-fundamentals\\src\\labs_examples\\input_output\\files\\exercise_2_new.txt";
+        String str;
+
+
+        try (BufferedReader buffIn = new BufferedReader(new FileReader(filePath)); BufferedWriter buffOut = new BufferedWriter(new FileWriter(writePath))) {
+            int n;
+
+            do{
+                str = buffIn.readLine().replaceAll("a","-").replaceAll("e","~");
+                buffOut.write(str);
+                System.out.print(str);
+            }while(buffIn.read() != -1);
+
+/*
+            while ((n = buffIn.read()) != -1) {
+
+                buffOut.write(n);
+                System.out.print((char) n);
+
+            }
+*/
+        } catch (IOException exc) {
+            System.out.println("Error occurred: " + exc.getMessage());
+        }
+    }
+}
