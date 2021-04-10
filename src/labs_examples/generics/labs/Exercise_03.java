@@ -18,3 +18,20 @@ import java.util.Collection;
  *
  */
 
+public class Exercise_03 <T extends Number, U extends Number>{
+
+    public static void main(String[] args) {
+        Exercise_03 classCeption = new Exercise_03();
+
+        System.out.println(classCeption.getSum(4.0, 5.0));
+        System.out.println(getSumTwo(5, 6));
+    }
+
+    public double getSum(T objOne, U objTwo){
+        return objOne.doubleValue() + objTwo.doubleValue();
+    }
+
+    public static <T extends Number, U extends Number> double getSumTwo(T objOne, U objTwo){
+        return objOne.doubleValue() + objTwo.doubleValue();
+    }
+}
