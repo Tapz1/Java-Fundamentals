@@ -23,3 +23,33 @@ package labs_examples.lambdas.labs;
  *
  *
  */
+
+public class Exercise_01 {
+
+    public static void main(String[] args) {
+        Printer p = () -> System.out.println("Hello");
+        p.printThis();
+
+        Printer multTwo = () -> {
+          int a = 4, b = 6;
+          int c = a*b;
+            System.out.println(c);
+        };
+        multTwo.printThis();
+
+        //int x = 63, y = 38;
+        Calculator sum = (x, y) -> x+y;
+        int total = sum.calculate(42, 36);
+        System.out.println(total);
+    }
+}
+
+@FunctionalInterface
+interface Printer{
+    void printThis();
+}
+
+@FunctionalInterface
+interface Calculator{
+    int calculate(int x, int y);
+}

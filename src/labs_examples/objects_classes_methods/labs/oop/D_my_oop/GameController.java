@@ -27,7 +27,7 @@ public class GameController{
 
     public static void letsPlay(){
         Scanner input = new Scanner(System.in);
-        String choice;hey   
+        String choice;
 
         Skills userSkills = new Skills();
         //UserItems newItems = new UserItems();

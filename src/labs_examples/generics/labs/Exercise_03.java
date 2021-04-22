@@ -31,7 +31,8 @@ public class Exercise_03 <T extends Number, U extends Number>{
         return objOne.doubleValue() + objTwo.doubleValue();
     }
 
-    public static <T extends Number, U extends Number> double getSumTwo(T objOne, U objTwo){
+    public static <T extends Number, U extends Number> double getSumTwo(T objOne, U objTwo) {
         return objOne.doubleValue() + objTwo.doubleValue();
     }
+
 }

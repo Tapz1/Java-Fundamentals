@@ -22,3 +22,4 @@ package labs_examples.lambdas.labs;
  *      11) Demonstrate the collect() terminal operation to store resulting values into a List
  *      
  */
+

@@ -40,6 +40,7 @@ class GenericArray<T extends Number>{
         double sum = 0;
         for(T item : this.nums){
             sum += item.doubleValue();
+            
         }
         return sum;
 
