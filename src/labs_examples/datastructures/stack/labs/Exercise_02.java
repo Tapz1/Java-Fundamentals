@@ -1,5 +1,7 @@
 package labs_examples.datastructures.stack.labs;
 
+import java.util.ArrayList;
+
 /**
  *      Stacks - Exercise_02
  *
@@ -18,3 +20,32 @@ package labs_examples.datastructures.stack.labs;
  *      TIP: To initialize an new array of a Generic type you can use this:
  *           Object[] data = (T[]) new Object[10];
  */
+
+public class Exercise_02 {
+    public static void main(String[] args) {
+
+    }
+}
+
+class CustomStack<T>{
+    ArrayList<T> stack = new ArrayList<>();
+
+    public void push(T item){
+        stack.add(0, item);
+    }
+
+    public T pop(){
+        try{
+            T item = stack.get(0);
+            stack.remove(0);
+            return item;
+        }catch (NullPointerException e){
+            e.getMessage();
+            return null;
+        }
+    }
+
+    public boolean empty(){
+        return stack.isEmpty();
+    }
+}
