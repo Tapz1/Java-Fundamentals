@@ -34,3 +34,4 @@ public class Exercise_01 {
         myQueue.clear();
     }
 }
+

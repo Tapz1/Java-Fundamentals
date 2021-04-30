@@ -1,5 +1,8 @@
 package labs_examples.datastructures.hashmap.labs;
 
+import java.util.*;
+
+
 /**
  *      HashMaps Exercise_02
  *
@@ -17,3 +20,13 @@ package labs_examples.datastructures.hashmap.labs;
  *      8) add at least one more method that you think could be useful to the HashMap
  *          review Java's built-in HashMap for inspiration
  */
+
+public class Exercise_02 {
+    public static void main(String[] args) {
+
+    }
+}
+
+class CustomHashMap<K, V>{
+    //private Map.Entry<K, V>[] table = new Map.Entry[];
+}
