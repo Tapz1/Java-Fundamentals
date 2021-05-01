@@ -1,5 +1,12 @@
 package labs_examples.lambdas.labs;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.IntStream;
+
 /**
  * Lambdas Exercise 4:
  *
@@ -23,3 +30,21 @@ package labs_examples.lambdas.labs;
  *      
  */
 
+public class Exercise_04 {
+    public static void main(String[] args) {
+        IntStream.range(1,15).forEach(System.out::println);
+
+        System.out.println();
+
+        int sum = IntStream.range(1,20).sum();
+        System.out.println(sum);
+
+        List<Integer> intList = Arrays.asList(2,4,6,8,10);
+
+        intList.stream()
+                .map(Integer::floatValue);
+
+        intList.stream().filter(x -> x < 10);
+
+    }
+}

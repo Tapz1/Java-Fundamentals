@@ -1,6 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
-import labs_examples.generics.examples.Containment;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ public class TextGame {
 
 enum Location{
     ROOM1("You suddenly wake up and find yourself in a room full of cat paintings. " +
-            "You see a door to the left of you facing East and a bookshelf to your right facing West.",
+            "You see a door to the left of you facing West and a bookshelf to your right facing East.",
             "You're back in the room yu woke up in with the cat paintings. Door facing East" +
-                    " and the secret room you found behind the bookshelf facing West"),
+                    " and that bookshelf on your right facing East"),
     ROOM2("You suddenly wake up and find yourself in a room full of cat paintings. " +
             "You see a door to the left of you facing East and a bookshelf to your right facing West.",
             "You enter through the door facing East. It's like a secret entrance full of jewelry" +
@@ -28,16 +28,27 @@ enum Location{
             "You also notice a musty old couch to your left that looks like it hasn't been used in years.",
             "You're in that room with the musty old couch, picture of the cat in front of you facing North" +
                     " and a door to your right facing East."),
-    ROOM5("", ""),
-    ROOM6("", ""),
-    ROOM7("", "");
+    ROOM5("It's a utility closet with some tools on the floor and some on the shelves. " +
+            "You notice a flashlight and test it out to make sure it works.",
+            "It's a utility closet with some tools on the floor and some on the shelves."),
+    ROOM6("As you open the door, you see a guard. But upon closer inspection, " +
+            "you notice they're passed out asleep. You can spot a door with a padlock on it to your left facing North " +
+            "and door straight across from you facing East.",
+            "You're back in the room with the guard. Phew, they're still sleeping. " +
+                    "Door with padlock facing North, a door facing West and another door facing East."),
+    ROOM7("This room is pitch-black, you can't see a thing! " +
+            "You try flickering the light switch but nothing happens.", "");
 
     private final String longDescription;
     private final String shortDescription;
+    //private final Location NorthExit;
+
+
 
     Location(String longDescription, String shortDescription) {
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
+        //this.NorthExit = NorthExit;
     }
 
     public String getLongDescription() {
@@ -48,6 +59,8 @@ enum Location{
         return shortDescription;
     }
 }
+
+
 
 class Character{
     Location location;
@@ -105,12 +118,11 @@ class Items{
     }
 }
 
-/*
+
 class RoomDescriptions{
-    public String room1Long = "";
+
 
 }
-*/
 
 /*
 class Skills{
