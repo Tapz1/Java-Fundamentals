@@ -18,7 +18,27 @@ public class GameController{
      */
 
     public static void main(String[] args) {
-        letsPlay();
+        //letsPlay();
+        String userName = "Chris";
+
+        Items userItems = new Items();
+
+        Character user = new Character(userName, userItems);
+        //RoomObjects room = new RoomObjects();
+
+
+
+        /*room.setRoom1(user);
+        //room.getRoom1();
+        System.out.println("Current Location: " +user.getLocation());
+        System.out.println(room.getRoom1().getLongDescription());
+
+        room.setRoom2(user);
+        System.out.println("New Location: " +user.getLocation());
+
+        String var = room.getRoom2().getDirection("W");
+        user.setLocation(var);
+        System.out.println("New New Location: " +user.getLocation());*/
     }
 
     public static void promptEnterKey(){
@@ -26,6 +46,8 @@ public class GameController{
         Scanner input = new Scanner(System.in);
         input.nextLine();
     }
+
+
 
     public static void letsPlay(){
 
@@ -55,118 +77,30 @@ public class GameController{
 
 
 
+        String[] validInputs = {"1", "2", "3"};
 
-        String playAgain;
+        boolean isRunning = true;
         do{
-
-            Items userItems = new Items();
-            ArrayList<String> itemList = userItems.getItems();
-
-            ArrayList<String> inputs = new ArrayList<>();
-            inputs.add("1");
-            inputs.add("2");
-
             System.out.println("Enter your name: ");
             String userName = input.next();
-            Character user = new Character(userName, userItems, Location.ROOM1);
+
+            Items userItems = new Items();
+            //ArrayList<String> itemList = userItems.getItems();
+
+            Character user = new Character(userName, userItems);
+            RoomObjects room = new RoomObjects();
+            //room.room1.roomObjects.getRoom1();
             ArrayList<String> roomList = user.getRooms();
 
+            // creates saved game data
             String writePath = "files\\"+userName+"_gameData.txt";
             promptEnterKey();
 
+            String userInput = input.next();
+            switch (userInput){
+                case "N":
 
-            /* Room 1 ******/
-            Location room = Location.ROOM1;
-
-            // checks if already been to room
-            if(roomList.contains("room1")){
-                System.out.println(Location.ROOM1.getShortDescription());
-            }else{
-                // adds new room to list and prints out long description
-                user.addRoom("room1");
-                System.out.println(Location.ROOM1.getLongDescription());
             }
-            promptEnterKey();
-
-            choice = getValidInput("1) Head to the door on your left \n2) Inspect the bookshelf to your right",inputs);
-
-                boolean goBack = false;
-                while(goBack == false){
-                    if(choice.equals("2")){
-                        /* goes to room 2 */
-                        user.location = Location.ROOM2;
-                        System.out.println("You go to inspect the bookshelf and notice a book that's out of place," +
-                                " sticking out slightly. You push in the book and the whole bookshelf moves," +
-                                " exposing a doorway.");
-                        promptEnterKey();
-                        inputs.remove("2"); // since there's only one way in this room
-                        // checks if already been to room
-                        if(roomList.contains("room2")){
-                            System.out.println(Location.ROOM2.getShortDescription());
-                            promptEnterKey();
-                            choice = getValidInput("1) Go back to the previous room",inputs);
-                        }else{
-                            // adds new room to list and prints out long description
-                            user.addRoom("room2");
-                            System.out.println(Location.ROOM2.getLongDescription());
-                            userItems.addItems("Room 3 Key");
-                            promptEnterKey();
-                            choice = getValidInput("1) Go back to the previous room",inputs);
-
-                        }
-                        inputs.add("2");
-                        goBack = true;
-                    }else{
-                        /* Room 3 ******/
-                        user.location = Location.ROOM3;
-                        System.out.println("You open the door to your left, going East");
-                        promptEnterKey();
-
-                        // checks if already been to room
-                        if(roomList.contains("room3")){
-                            System.out.println(Location.ROOM3.getShortDescription());
-                        }else{
-                            // adds new room to list and prints out long description
-                            user.addRoom("room3");
-                            System.out.println(Location.ROOM3.getLongDescription());
-                            promptEnterKey();
-                        }
-
-                        choice = getValidInput("1) Search the room\n2) Try the door on your right\n3) Return to the previous room",inputs);
-                        inputs.add("3");
-                        if(choice.equals("1")){
-                            System.out.println("Upon searching the room, you find a pair of super soft boot-like slippers that" +
-                                    " don't make any noise when you walk.");
-                            promptEnterKey();
-                            System.out.println("\"This could be useful\"");
-                            System.out.println("You put them on.");
-                            promptEnterKey();
-                            userItems.addItems("slippers");
-
-                        }else if(choice.equals("2")){
-                            System.out.println("You try the door to your right, going North");
-                            promptEnterKey();
-                            if(itemList.contains("Room 3 Key")){
-                                System.out.println("Door's locked but you try the key you found.");
-                                // continue to room 4
-                            }else{
-                                // adds new room to list and prints out long description
-                                System.out.println("Darn. Door's locked. I'll have to look for a key somewhere.");
-                                // stays in room
-                            }
-                        }else {
-                            goBack = true;
-                        }
-                    }
-
-                promptEnterKey();
-
-                }
-
-            promptEnterKey();
-            // return to room1
-            System.out.println("You return back to the first room");
-            user.location = Location.ROOM3;
 
 
 
@@ -174,28 +108,11 @@ public class GameController{
             promptEnterKey();
 
 
-            System.out.println("Would you like to play again? Type 'no' to exit");
-            playAgain = input.next();
-        }while(!playAgain.equals("no"));
+        }while(isRunning);
     }
 
-/*
-    public static void actOneChoiceOne(Character user, Skills skills){
-        System.out.println("Upon searching the room, you find a healthkit which increases your health permanently.");
-        promptEnterKey();
-        int increase = 20;
-        user.skills.healthIncrease(increase);
 
-        System.out.println("Your health increased by " + increase + "! Your health is now at " + skills.health);
-        promptEnterKey();
-    }
-*/
-
-/*    public static String returnDescription(Character user, String room){
-
-    }*/
-
-    public static String getValidInput(String prompt, ArrayList<String> validInputs){
+    public static String getValidInput(String prompt, String[] validInputs){
         Scanner input = new Scanner(System.in);
         String choice;
         do{
@@ -206,7 +123,7 @@ public class GameController{
         return choice;
     }
 
-    public static boolean isValid(ArrayList<String> validInputs, String choice){
+    public static boolean isValid(String[] validInputs, String choice){
         for(String input : validInputs){
             if(input.equals(choice)){
                 return true;
@@ -215,27 +132,6 @@ public class GameController{
         System.out.println("Wrong input");
         return false;
     }
-/*
-    public static void fightSequence(Character user, Skills skills, String enemy, int damage){
-        String choice;
-        do{
-            System.out.println(enemy + " charged at you.");
-            String[] inputs = {"1", "2"};
-            choice = getValidInput("What would you like to do? \n1. Attack \n2.Dodge",inputs);
-
-
-            if(choice.equals("1")){
-                user.skills.healthDecrease(8);
-                System.out.println("You get hurt by " + enemy);
-                System.out.println("But you attack right back and kill it dealing " + user.skills.attack + " damage to it.");
-                promptEnterKey();
-
-            }else{
-                System.out.println("You dodge");
-                System.out.println("But then you attack right after and kill it dealing " + user.skills.attack + " damage to it.");
-                promptEnterKey();
-            }
-*/
 
 
 }
