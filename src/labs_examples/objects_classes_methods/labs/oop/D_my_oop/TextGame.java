@@ -23,12 +23,13 @@ class RoomData{
     //private HashMap<String, Boolean> direction;
     private HashMap<String, String> direction;
 
-    public RoomData(String roomName, String longDescription, String shortDescription, ArrayList<String> roomItems){
+    public RoomData(String roomName, String longDescription, String shortDescription, ArrayList<String> roomItems,
+                    HashMap<String, String> roomDirections){
         this.roomName = roomName;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
         this.items = roomItems;
-        this.direction = new HashMap<>();
+        this.direction = roomDirections;
     }
 
 
@@ -58,9 +59,9 @@ class RoomData{
         this.items.add(item);
     }
 
-    public String getDirection(String directionChoice) {
-        return this.direction.get(directionChoice);
-       //return direction;
+    public HashMap<String, String> getDirection(/*String directionChoice*/) {
+        //return this.direction.get(directionChoice);
+       return direction;
     }
 
     public void setDirection(HashMap<String, String> direction) {

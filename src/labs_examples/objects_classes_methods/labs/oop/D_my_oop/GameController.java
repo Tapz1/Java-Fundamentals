@@ -88,7 +88,7 @@ public class GameController{
             //ArrayList<String> itemList = userItems.getItems();
 
             Character user = new Character(userName, userItems);
-            RoomObjects room = new RoomObjects();
+            //RoomObjects room = new RoomObjects();
             //room.room1.roomObjects.getRoom1();
             ArrayList<String> roomList = user.getRooms();
 

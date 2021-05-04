@@ -9,7 +9,8 @@ public class RoomObjects {
 
 
     public RoomObjects(String room){
-        this.roomData = new RoomData(roomName(room), longDescription(room),shortDescription(room), roomItems(roomData, room))
+        this.roomData = new RoomData(roomName(room), longDescription(room),shortDescription(room), roomItems(roomData, room),
+                roomDirections(roomData, room));
     }
 
 
@@ -19,19 +20,31 @@ public class RoomObjects {
             roomData.addDirection("S", null);
             roomData.addDirection("E", "room2");
             roomData.addDirection("W", "room3");
+            return roomData.getDirection();
         }
         else if(room.equals("room2")){
-            roomData.addItems("Shoe Room Key");
-            return roomData.getItems();
+            roomData.addDirection("N", null);
+            roomData.addDirection("S", null);
+            roomData.addDirection("E", null);
+            roomData.addDirection("W", "room1");
+            return roomData.getDirection();
         }
         else if(room.equals("room3")){
-            roomData.addItems("Soft Slippers");
-            return roomData.getItems();
+            roomData.addDirection("N", "room4");
+            roomData.addDirection("S", null);
+            roomData.addDirection("E", "room1");
+            roomData.addDirection("W", null);
+            return roomData.getDirection();
         }
         else if(room.equals("room4")){
             // no items
-            return roomData.getItems();
+            roomData.addDirection("N", null);  // points to room 5
+            roomData.addDirection("S", null);  // points to room 3
+            roomData.addDirection("E", null);  // points to room 6
+            roomData.addDirection("W", null);
+            return roomData.getDirection();
         }
+/*
         else if(room.equals("room5")){
             roomData.addItems("Flashlight");
             return roomData.getItems();
@@ -45,8 +58,10 @@ public class RoomObjects {
         }else if(room.equals("room8")){
             // no items
             return roomData.getItems();
-        }else{
-            return roomData.getItems();
+
+        }*/
+        else{
+            return roomData.getDirection();
         }
     }
 
