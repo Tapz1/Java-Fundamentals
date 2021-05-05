@@ -46,5 +46,6 @@ public class Exercise_04 {
 
         intList.stream().filter(x -> x < 10);
 
+
     }
 }

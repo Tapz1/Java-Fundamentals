@@ -24,21 +24,34 @@ public class GameController{
         Items userItems = new Items();
 
         Character user = new Character(userName, userItems);
-        //RoomObjects room = new RoomObjects();
+
+        boolean isRunning = true;
+        String roomName = "room1";
+        RoomObjects roomObj = new RoomObjects();
+        RoomData newRoom = new RoomData(roomObj.roomName(roomName),
+                roomObj.longDescription(roomName), roomObj.shortDescription(roomName),
+                roomObj.roomItems(roomName), roomObj.roomDirections(roomName));
+
+        while(isRunning){
+            Scanner in = new Scanner(System.in);
+            String choice = in.next();
+            switch (choice){
+                case "N":
+                    String direction = newRoom.getDirection().get("N");
+                    System.out.println("Switching to: " + direction);
+                    newRoom = new RoomData(roomObj.roomName(direction),
+                            roomObj.longDescription(direction), roomObj.shortDescription(direction),
+                            roomObj.roomItems(direction), roomObj.roomDirections(direction));
+                    break;
+                default:
+                    break;
+            }
+            choice = in.next();
+        }
 
 
 
-        /*room.setRoom1(user);
-        //room.getRoom1();
-        System.out.println("Current Location: " +user.getLocation());
-        System.out.println(room.getRoom1().getLongDescription());
 
-        room.setRoom2(user);
-        System.out.println("New Location: " +user.getLocation());
-
-        String var = room.getRoom2().getDirection("W");
-        user.setLocation(var);
-        System.out.println("New New Location: " +user.getLocation());*/
     }
 
     public static void promptEnterKey(){
