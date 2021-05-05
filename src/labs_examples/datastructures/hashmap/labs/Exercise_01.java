@@ -60,6 +60,8 @@ public class Exercise_01 {
         phoneBook.remove("Kristin");
         phoneBook.replace("Chris","6034441234","6034689088");
 
+        String var = phoneBook.get("Chris");
+        System.out.println("Test: " +var);
         for(Map.Entry<String, String> item : newPhoneBook.entrySet()){
             System.out.println(item.getKey() + ", " + item.getValue());
         }

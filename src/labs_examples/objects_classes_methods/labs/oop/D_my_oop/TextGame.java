@@ -19,18 +19,24 @@ class RoomData{
     private String roomName;
     private String longDescription;
     private String shortDescription;
-    private ArrayList<String> items = new ArrayList<>();
+    private String[] items = new String[1];
     //private HashMap<String, Boolean> direction;
-    private HashMap<String, String> direction;
+    private HashMap<String, String> direction = new HashMap<>();
 
-    public RoomData(String roomName, String longDescription, String shortDescription, ArrayList<String> roomItems,
-                    HashMap<String, String> roomDirections){
+/*
+    public RoomData(String roomName, String longDescription, String shortDescription*/
+/*, ArrayList<String> roomItems,
+                    HashMap<String, String> roomDirections*//*
+){
         this.roomName = roomName;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
-        this.items = roomItems;
-        this.direction = roomDirections;
-    }
+*/
+/*
+        this.items =
+        this.direction =
+*/
+    //}
 
 
 
@@ -51,17 +57,17 @@ class RoomData{
         this.shortDescription = shortDescription;
     }
 
-    public ArrayList<String> getItems() {
+    public String[] getItems() {
         return items;
     }
 
     public void addItems(String item){
-        this.items.add(item);
+        this.items[0] = item;
     }
 
-    public HashMap<String, String> getDirection(/*String directionChoice*/) {
-        //return this.direction.get(directionChoice);
-       return direction;
+    public String getDirection(String directionChoice) {
+        return this.direction.get(directionChoice);
+       //return direction;
     }
 
     public void setDirection(HashMap<String, String> direction) {
@@ -72,7 +78,25 @@ class RoomData{
         this.direction.put(direction, value);
     }
 
+    public Character getUser() {
+        return user;
+    }
 
+    public void setUser(Character user) {
+        this.user = user;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public void setItems(String[] items) {
+        this.items = items;
+    }
 }
 
 

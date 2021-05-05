@@ -5,7 +5,8 @@ import java.util.HashMap;
 
 public class RoomObjects {
 
-    private RoomData roomData;
+    private RoomData roomData = new RoomData();
+
 
 
 /*
@@ -17,27 +18,28 @@ public class RoomObjects {
 */
 
 
-    public HashMap<String,String> roomDirections(String room){
+
+    public void roomDirections(String room){
         if(room.equals("room1")){
             roomData.addDirection("N", null);
             roomData.addDirection("S", null);
             roomData.addDirection("E", "room2");
             roomData.addDirection("W", "room3");
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
         else if(room.equals("room2")){
             roomData.addDirection("N", null);
             roomData.addDirection("S", null);
             roomData.addDirection("E", null);
             roomData.addDirection("W", "room1");
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
         else if(room.equals("room3")){
             roomData.addDirection("N", "room4");
             roomData.addDirection("S", null);
             roomData.addDirection("E", "room1");
             roomData.addDirection("W", null);
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
         else if(room.equals("room4")){
             // no items
@@ -45,100 +47,101 @@ public class RoomObjects {
             roomData.addDirection("S", "room3");  // points to room 3
             roomData.addDirection("E", "room6");  // points to room 6
             roomData.addDirection("W", null);
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
         else if(room.equals("room5")){
             roomData.addDirection("N", null);
             roomData.addDirection("S", "room4");  // points to room 4
             roomData.addDirection("E", null);
             roomData.addDirection("W", null);
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
         else if(room.equals("room6")){
             roomData.addDirection("N", "room8"); // points to room 8 only if key is in inventory
             roomData.addDirection("S", null);
             roomData.addDirection("E", "room7"); // points to room 7 only if slippers are in inventory
             roomData.addDirection("W", "room4");  // points to room 4
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }else if(room.equals("room7")){
             roomData.addDirection("N", null);
             roomData.addDirection("S", null);
             roomData.addDirection("E", null);
             roomData.addDirection("W", "room6");  // points to room 6
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }else if(room.equals("room8")){
             roomData.addDirection("N", null);
             roomData.addDirection("S", null);
             roomData.addDirection("E", null);
             roomData.addDirection("W", null);
-            return roomData.getDirection();
+            //return roomData.getDirection();
 
         }
         else{
-            return roomData.getDirection();
+            //return roomData.getDirection();
         }
     }
 
 
-    public String roomItems(String room){
-        if(room.equals("room1")){
-            // No items in here
-            return this.roomData.getItems();
-        }
-        else if(room.equals("room2")){
-            this.roomData.addItems("Shoe Room Key");
-            return this.roomData.getItems();
-        }
-        else if(room.equals("room3")){
-            this.roomData.addItems("Soft Slippers");
-            return this.roomData.getItems();
-        }
-        else if(room.equals("room4")){
-            // no items
-            return this.roomData.getItems();
-        }
-        else if(room.equals("room5")){
-            this.roomData.addItems("Flashlight");
-            return this.roomData.getItems();
-        }
-        else if(room.equals("room6")){
-            // no items in here
-            return this.roomData.getItems();
-        }else if(room.equals("room7")){
-            this.roomData.addItems("Guard Room - Padlock Key");
-            return this.roomData.getItems();
-        }else if(room.equals("room8")){
-            // no items
-            return this.roomData.getItems();
-        }else{
-            return this.roomData.getItems();
+    public void roomItems(String room){
+        switch (room) {
+            case "room1":
+                // No items in here
+                //return this.roomData.getItems();
+                break;
+            case "room2":
+                this.roomData.addItems("Shoe Room Key");
+                //return this.roomData.getItems();
+                break;
+            case "room3":
+                this.roomData.addItems("Soft Slippers");
+                //return this.roomData.getItems();
+                break;
+            case "room4":
+                // no items
+                //return this.roomData.getItems();
+                break;
+            case "room5":
+                this.roomData.addItems("Flashlight");
+                //return this.roomData.getItems();
+                break;
+            case "room6":
+                // no items in here
+                //return this.roomData.getItems();
+                break;
+            case "room7":
+                this.roomData.addItems("Guard Room - Padlock Key");
+                //return this.roomData.getItems();
+                break;
+            case "room8":
+                // no items
+                //return this.roomData.getItems();
+                break;
+            default:
+                //return this.roomData.getItems();
+                break;
         }
     }
 
     public String roomName(String room){
-        if(room.equals("room1")){
-            return "Master Bedroom";
-        }
-        else if(room.equals("room2")){
-            return "Bedroom Closet";
-        }
-        else if(room.equals("room3")){
-            return "Shoe Room";
-        }
-        else if(room.equals("room4")){
-            return "Hallway";
-        }
-        else if(room.equals("room5")){
-            return "Utility Closet";
-        }
-        else if(room.equals("room6")){
-            return "Guard Room";
-        }else if(room.equals("room7")){
-            return "Storage Room";
-        }else if(room.equals("room8")){
-            return "End";
-        }else{
-            return "";
+        switch (room) {
+            case "room1":
+                return "Master Bedroom";
+            case "room2":
+                return "Bedroom Closet";
+            case "room3":
+                return "Shoe Room";
+            case "room4":
+                return "Hallway";
+            case "room5":
+                return "Utility Closet";
+            case "room6":
+                return "Guard Room";
+            case "room7":
+                return "Storage Room";
+            case "room8":
+                return "End";
+            default:
+                return "";
         }
     }
 

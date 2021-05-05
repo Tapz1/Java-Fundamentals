@@ -18,38 +18,7 @@ public class GameController{
      */
 
     public static void main(String[] args) {
-        //letsPlay();
-        String userName = "Chris";
-
-        Items userItems = new Items();
-
-        Character user = new Character(userName, userItems);
-
-        boolean isRunning = true;
-        String roomName = "room1";
-        RoomObjects roomObj = new RoomObjects();
-        RoomData newRoom = new RoomData(roomObj.roomName(roomName),
-                roomObj.longDescription(roomName), roomObj.shortDescription(roomName),
-                roomObj.roomItems(roomName), roomObj.roomDirections(roomName));
-
-        while(isRunning){
-            Scanner in = new Scanner(System.in);
-            String choice = in.next();
-            switch (choice){
-                case "N":
-                    String direction = newRoom.getDirection().get("N");
-                    System.out.println("Switching to: " + direction);
-                    newRoom = new RoomData(roomObj.roomName(direction),
-                            roomObj.longDescription(direction), roomObj.shortDescription(direction),
-                            roomObj.roomItems(direction), roomObj.roomDirections(direction));
-                    break;
-                default:
-                    break;
-            }
-            choice = in.next();
-        }
-
-
+        letsPlay();
 
 
     }
@@ -64,64 +33,53 @@ public class GameController{
 
     public static void letsPlay(){
 
-        //String filePath = "C:\\Users\\chris\\Documents\\Coding\\CodingNomads\\labs\\online-java-fundamentals\\src\\labs_examples\\input_output\\files\\char_data.txt";
-
-        String str;
-
-
-/*
-        try (BufferedReader buffIn = new BufferedReader(new FileReader(filePath)); BufferedWriter buffOut = new BufferedWriter(new FileWriter(writePath))) {
-            int n;
-
-            do{
-                str = buffIn.readLine();
-                buffOut.write(str);
-                System.out.print(str);
-            }while(buffIn.read() != -1);
-        } catch (IOException exc) {
-            System.out.println("Error occurred: " + exc.getMessage());
-        }
-*/
-
-        Scanner input = new Scanner(System.in);
-        String choice;
-
-        //Skills userSkills = new Skills();
-
-
 
         String[] validInputs = {"1", "2", "3"};
 
+        String userName = "Chris";  // test
+
+        Items userItems = new Items();
+
+        Character user = new Character(userName, userItems);
+
         boolean isRunning = true;
-        do{
-            System.out.println("Enter your name: ");
-            String userName = input.next();
+        String roomName = "room3";
+        RoomObjects roomObj = new RoomObjects();
+        RoomData newRoom = new RoomData();
 
-            Items userItems = new Items();
-            //ArrayList<String> itemList = userItems.getItems();
+        roomObj.roomName(roomName);
+        roomObj.longDescription(roomName);
+        roomObj.shortDescription(roomName);
+        roomObj.roomItems(roomName);
+        roomObj.roomDirections(roomName);
 
-            Character user = new Character(userName, userItems);
-            //RoomObjects room = new RoomObjects();
-            //room.room1.roomObjects.getRoom1();
-            ArrayList<String> roomList = user.getRooms();
-
-            // creates saved game data
-            String writePath = "files\\"+userName+"_gameData.txt";
-            promptEnterKey();
-
-            String userInput = input.next();
-            switch (userInput){
+        while(isRunning){
+            System.out.println("Game Start");
+            System.out.println("You are in " + roomObj.roomName(roomName));
+            Scanner in = new Scanner(System.in);
+            System.out.println("Choose an option: ");
+            String choice = in.next();
+            switch (choice){
                 case "N":
-
+                    roomName = newRoom.getDirection("N");
+                    System.out.println("Switching to: " + roomName);
+                    newRoom = new RoomData();
+                    roomObj.roomName(roomName);
+                    roomObj.longDescription(roomName);
+                    roomObj.shortDescription(roomName);
+                    roomObj.roomItems(roomName);
+                    roomObj.roomDirections(roomName);
+                    break;
+                case "exit":
+                    isRunning = false;
+                default:
+                    break;
             }
 
+        }
 
+            //promptEnterKey();
 
-
-            promptEnterKey();
-
-
-        }while(isRunning);
     }
 
 
