@@ -3,6 +3,7 @@ package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class GameController{
@@ -44,31 +45,88 @@ public class GameController{
 
         boolean isRunning = true;
         String roomName = "room3";
-        RoomObjects roomObj = new RoomObjects();
+
         RoomData newRoom = new RoomData();
 
-        roomObj.roomName(roomName);
-        roomObj.longDescription(roomName);
-        roomObj.shortDescription(roomName);
-        roomObj.roomItems(roomName);
-        roomObj.roomDirections(roomName);
+        newRoom.roomName(roomName);
+        newRoom.longDescription(roomName);
+        newRoom.shortDescription(roomName);
+        newRoom.roomItems(roomName);
+        newRoom.roomDirections(roomName);
+
+        System.out.println("Game Start");
+        System.out.println("You are in " + newRoom.roomName(roomName));
 
         while(isRunning){
-            System.out.println("Game Start");
-            System.out.println("You are in " + roomObj.roomName(roomName));
+
+
+
             Scanner in = new Scanner(System.in);
             System.out.println("Choose an option: ");
             String choice = in.next();
-            switch (choice){
+            switch ((choice).toUpperCase(Locale.ROOT)){
                 case "N":
-                    roomName = newRoom.getDirection("N");
-                    System.out.println("Switching to: " + roomName);
-                    newRoom = new RoomData();
-                    roomObj.roomName(roomName);
-                    roomObj.longDescription(roomName);
-                    roomObj.shortDescription(roomName);
-                    roomObj.roomItems(roomName);
-                    roomObj.roomDirections(roomName);
+                    try {
+                        roomName = newRoom.getDirection().get("N");
+
+                        System.out.println("Switching to: " + roomName);
+                        newRoom = new RoomData();
+                        System.out.println("You are now in " + newRoom.roomName(roomName));
+                        newRoom.longDescription(roomName);
+                        newRoom.shortDescription(roomName);
+                        newRoom.roomItems(roomName);
+                        newRoom.roomDirections(roomName);
+                    }catch (NullPointerException nullExc){
+                        System.out.println("Can't go in that direction");
+                    }
+                    break;
+                case "E":
+                    try {
+                        roomName = newRoom.getDirection().get("E");
+
+                        System.out.println("Switching to: " + roomName);
+                        newRoom = new RoomData();
+                        System.out.println("You are now in " + newRoom.roomName(roomName));
+                        newRoom.longDescription(roomName);
+                        newRoom.shortDescription(roomName);
+                        newRoom.roomItems(roomName);
+                        newRoom.roomDirections(roomName);
+                    }catch (NullPointerException nullExc){
+                        System.out.println("Can't go in that direction");
+                    }
+                    break;
+                case "S":
+                    try {
+                        roomName = newRoom.getDirection().get("S");
+
+                        System.out.println("Switching to: " + roomName);
+                        newRoom = new RoomData();
+                        System.out.println("You are now in " + newRoom.roomName(roomName));
+                        newRoom.longDescription(roomName);
+                        newRoom.shortDescription(roomName);
+                        newRoom.roomItems(roomName);
+                        newRoom.roomDirections(roomName);
+                    }catch (NullPointerException nullExc){
+                        System.out.println("Can't go in that direction");
+                    }
+                    break;
+                case "W":
+                    try {
+                        roomName = newRoom.getDirection().get("W");
+
+                        System.out.println("Switching to: " + roomName);
+                        newRoom = new RoomData();
+                        System.out.println("You are now in " + newRoom.roomName(roomName));
+                        newRoom.longDescription(roomName);
+                        newRoom.shortDescription(roomName);
+                        newRoom.roomItems(roomName);
+                        newRoom.roomDirections(roomName);
+                    }catch (NullPointerException nullExc){
+                        System.out.println("Can't go in that direction");
+                    }
+                    break;
+                case "I":
+                    newRoom.getInfo();
                     break;
                 case "exit":
                     isRunning = false;
