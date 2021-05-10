@@ -33,52 +33,64 @@ public class GameController{
 
 
     public static void letsPlay(){
-
+        Scanner in = new Scanner(System.in);
 
         String[] validInputs = {"1", "2", "3"};
 
-        String userName = "Chris";  // test
+        System.out.println("Enter name: ");
+        String userName = in.next();
 
         Items userItems = new Items();
 
         Character user = new Character(userName, userItems);
 
-        boolean isRunning = true;
-        String roomName = "room3";
+
+        String roomName = "room1";
 
         RoomData newRoom = new RoomData();
 
-        newRoom.roomName(roomName);
-        newRoom.longDescription(roomName);
-        newRoom.shortDescription(roomName);
+        newRoom.nameOfRoom(roomName);
+        newRoom.setLongDescription(roomName);
+        newRoom.setShortDescription(roomName);
         newRoom.roomItems(roomName);
         newRoom.roomDirections(roomName);
 
         System.out.println("Game Start");
-        System.out.println("You are in " + newRoom.roomName(roomName));
+        //System.out.println("You are in " + newRoom.roomName(roomName));
+        System.out.println(newRoom.getLongDescription());
+        promptEnterKey();
+        System.out.println("Enter what you would like to do \n(enter 'm' to view menu of options)");
 
+        boolean isRunning = true;
         while(isRunning){
 
-
-
-            Scanner in = new Scanner(System.in);
-            System.out.println("Choose an option: ");
             String choice = in.next();
             switch ((choice).toUpperCase(Locale.ROOT)){
+                case "M":
+                    newRoom.menu();
+                    break;
                 case "N":
                     try {
                         roomName = newRoom.getDirection().get("N");
 
                         System.out.println("Switching to: " + roomName);
                         newRoom = new RoomData();
-                        System.out.println("You are now in " + newRoom.roomName(roomName));
-                        newRoom.longDescription(roomName);
-                        newRoom.shortDescription(roomName);
+                        System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
+                        newRoom.setLongDescription(roomName);
+                        newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
+                        user.addRoom(roomName);
+                        if(user.getRooms().contains(roomName)){
+                            System.out.println(newRoom.getShortDescription());
+                        }else{
+                            System.out.println(newRoom.getLongDescription());
+                            user.addRoom(roomName);
+                        }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
                     }
+
                     break;
                 case "E":
                     try {
@@ -86,11 +98,18 @@ public class GameController{
 
                         System.out.println("Switching to: " + roomName);
                         newRoom = new RoomData();
-                        System.out.println("You are now in " + newRoom.roomName(roomName));
-                        newRoom.longDescription(roomName);
-                        newRoom.shortDescription(roomName);
+                        System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
+                        newRoom.setLongDescription(roomName);
+                        newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
+                        user.addRoom(roomName);
+                        if(user.getRooms().contains(roomName)){
+                            System.out.println(newRoom.getShortDescription());
+                        }else{
+                            System.out.println(newRoom.getLongDescription());
+                            user.addRoom(roomName);
+                        }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
                     }
@@ -98,17 +117,24 @@ public class GameController{
                 case "S":
                     try {
                         roomName = newRoom.getDirection().get("S");
-
                         System.out.println("Switching to: " + roomName);
                         newRoom = new RoomData();
-                        System.out.println("You are now in " + newRoom.roomName(roomName));
-                        newRoom.longDescription(roomName);
-                        newRoom.shortDescription(roomName);
+                        System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
+                        newRoom.setLongDescription(roomName);
+                        newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
+                        user.addRoom(roomName);
+                        if(user.getRooms().contains(roomName)){
+                            System.out.println(newRoom.getShortDescription());
+                        }else{
+                            System.out.println(newRoom.getLongDescription());
+                            user.addRoom(roomName);
+                        }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
                     }
+
                     break;
                 case "W":
                     try {
@@ -116,21 +142,50 @@ public class GameController{
 
                         System.out.println("Switching to: " + roomName);
                         newRoom = new RoomData();
-                        System.out.println("You are now in " + newRoom.roomName(roomName));
-                        newRoom.longDescription(roomName);
-                        newRoom.shortDescription(roomName);
+                        System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
+                        newRoom.setLongDescription(roomName);
+                        newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
+                        user.addRoom(roomName);
+                        if(user.getRooms().contains(roomName)){
+                            System.out.println(newRoom.getShortDescription());
+                        }else{
+                            System.out.println(newRoom.getLongDescription());
+                            user.addRoom(roomName);
+                        }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
                     }
                     break;
-                case "I":
+                case "1":
+                    if(newRoom.getItems()[0] == null){
+                        System.out.println("No items in here");
+                    }else{
+                        String item = newRoom.getItems()[0];
+                        userItems.addItems(user, item);
+                    }
+                    break;
+                case "2":
+                    if(userItems.getItems().isEmpty()){
+                        System.out.println("You don't have any items!");
+                    }else{
+                        userItems.printItems();
+                    }
+                    break;
+                case "3":
+                    System.out.println(newRoom.nameOfRoom(roomName));
+                    break;
+                case "4":
+                    System.out.println(newRoom.getShortDescription());
+                    break;
+                case "5":
                     newRoom.getInfo();
                     break;
-                case "exit":
+                case "6":
                     isRunning = false;
                 default:
+                    System.out.println("That wasn't a valid input.");
                     break;
             }
 
