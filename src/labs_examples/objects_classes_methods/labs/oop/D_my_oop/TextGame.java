@@ -62,12 +62,6 @@ class RoomData{
     }
 
 
-/*
-    public String getDirectionValue(String directionChoice) {
-        return direction.get(directionChoice);
-    }
-*/
-
     public String getLongDescription() {
         return longDescription;
     }
@@ -94,18 +88,6 @@ class RoomData{
 
     public void setUser(Character user) {
         this.user = user;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public void setItems(String[] items) {
-        this.items = items;
     }
 
 
@@ -265,15 +247,15 @@ class RoomData{
                 break;
             case "room3":
                 this.longDescription = "You're in a room full of shoes! " +
-                        "As you inspect the room, you can see racks of sneakers, boots and slippers up against " +
+                        "\nAs you inspect the room, you can see racks of sneakers, boots and slippers up against " +
                         "the wall in front of you and on the wall to your left." +
-                        " This room has two doors.";
+                        " \nThis room has two doors.";
                 break;
             case "room4":
                 this.longDescription = "You find yourself in a long hallway with " +
                         "two doors. One at the end of the hallway and another door to the right of it. " +
-                        "You also notice a musty smell and which is probably emitting from the old couch to your left. " +
-                        "Man, it looks like it hasn't been used in years!";
+                        "\nYou also notice a musty smell and which is probably emitting from the old couch to your left. " +
+                        "\nMan, it looks like it hasn't been used in years!";
                 break;
             case "room5":
                 this.longDescription = "You're in a utility closet with some tools on the floor and some on the shelves. " +
@@ -281,7 +263,7 @@ class RoomData{
                 break;
             case "room6":
                 this.longDescription = "Upon opening the door you see a guard. But it looks like he's asleep. " +
-                        "You'll need to be super quiet getting around him. You spot two other doors in this room.";
+                        "\nYou'll need to be super quiet getting around him. You spot two other doors in this room.";
                 break;
             case "room7":
                 this.longDescription = "This room is pitch-black, you can't see a thing! You try flickering the light switch but nothing happens.";
@@ -398,6 +380,7 @@ class Items{
     }
 
     public void printItems(){
+        System.out.println("Your inventory:");
         for(String item : this.items){
             System.out.println(item);
         }

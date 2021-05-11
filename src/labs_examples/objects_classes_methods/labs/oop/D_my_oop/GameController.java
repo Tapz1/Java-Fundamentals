@@ -35,8 +35,6 @@ public class GameController{
     public static void letsPlay(){
         Scanner in = new Scanner(System.in);
 
-        String[] validInputs = {"1", "2", "3"};
-
         System.out.println("Enter name: ");
         String userName = in.next();
 
@@ -44,9 +42,10 @@ public class GameController{
 
         Character user = new Character(userName, userItems);
 
-
+        // sets each run through from the beginning
         String roomName = "room1";
 
+        /* setting up the first room object */
         RoomData newRoom = new RoomData();
 
         newRoom.nameOfRoom(roomName);
@@ -54,9 +53,10 @@ public class GameController{
         newRoom.setShortDescription(roomName);
         newRoom.roomItems(roomName);
         newRoom.roomDirections(roomName);
+        user.addRoom(roomName);
 
-        System.out.println("Game Start");
-        //System.out.println("You are in " + newRoom.roomName(roomName));
+        System.out.println("---Game Start---");
+        promptEnterKey();
         System.out.println(newRoom.getLongDescription());
         promptEnterKey();
         System.out.println("Enter what you would like to do \n(enter 'm' to view menu of options)");
@@ -70,22 +70,37 @@ public class GameController{
                     newRoom.menu();
                     break;
                 case "N":
+                    // north direction
                     try {
-                        roomName = newRoom.getDirection().get("N");
+                        roomName = newRoom.getDirection().get("N"); // pulls the val of where room points
 
-                        System.out.println("Switching to: " + roomName);
+                        /** these ifs look for locked doors **/
+                        if(roomName.equals("room4") && !userItems.getItems().contains("Shoe Room Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }else if(roomName.equals("room6") && !userItems.getItems().contains("Soft Slippers")){
+                            System.out.println("'There's someone there, I'll need to find a way to sneak through'");
+                            break;
+                        }else if(roomName.equals("room8") && !userItems.getItems().contains("Guard Room - Padlock Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }
+
+                        //System.out.println("Switching to: " + roomName);  // testing purposes
+                        /** generates the new room object **/
                         newRoom = new RoomData();
                         System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
                         newRoom.setLongDescription(roomName);
                         newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
-                        user.addRoom(roomName);
-                        if(user.getRooms().contains(roomName)){
-                            System.out.println(newRoom.getShortDescription());
-                        }else{
+
+                        if(!user.getRooms().contains(roomName)){
                             System.out.println(newRoom.getLongDescription());
                             user.addRoom(roomName);
+                        }
+                        if(roomName.equals("room8")){
+                            isRunning = false;
                         }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
@@ -95,20 +110,30 @@ public class GameController{
                 case "E":
                     try {
                         roomName = newRoom.getDirection().get("E");
+                        if(roomName.equals("room4") && !userItems.getItems().contains("Shoe Room Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }else if(roomName.equals("room6") && !userItems.getItems().contains("Soft Slippers")){
+                            System.out.println("'There's someone there, I'll need to find a way to sneak through'");
+                            break;
+                        }else if(roomName.equals("room8") && !userItems.getItems().contains("Guard Room - Padlock Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }
 
-                        System.out.println("Switching to: " + roomName);
+                        //System.out.println("Switching to: " + roomName);   // testing purposes
                         newRoom = new RoomData();
                         System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
                         newRoom.setLongDescription(roomName);
                         newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
-                        user.addRoom(roomName);
-                        if(user.getRooms().contains(roomName)){
-                            System.out.println(newRoom.getShortDescription());
-                        }else{
+                        if(!user.getRooms().contains(roomName)){
                             System.out.println(newRoom.getLongDescription());
                             user.addRoom(roomName);
+                        }
+                        if(roomName.equals("room8")){
+                            isRunning = false;
                         }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
@@ -117,19 +142,32 @@ public class GameController{
                 case "S":
                     try {
                         roomName = newRoom.getDirection().get("S");
-                        System.out.println("Switching to: " + roomName);
+
+                        if(roomName.equals("room4") && !userItems.getItems().contains("Shoe Room Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }else if(roomName.equals("room6") && !userItems.getItems().contains("Soft Slippers")){
+                            System.out.println("'There's someone there, I'll need to find a way to sneak through'");
+                            break;
+                        }else if(roomName.equals("room8") && !userItems.getItems().contains("Guard Room - Padlock Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }
+
+                        //System.out.println("Switching to: " + roomName);    // testing purposes
+
                         newRoom = new RoomData();
                         System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
                         newRoom.setLongDescription(roomName);
                         newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
-                        user.addRoom(roomName);
-                        if(user.getRooms().contains(roomName)){
-                            System.out.println(newRoom.getShortDescription());
-                        }else{
+                        if(!user.getRooms().contains(roomName)){
                             System.out.println(newRoom.getLongDescription());
                             user.addRoom(roomName);
+                        }
+                        if(roomName.equals("room8")){
+                            isRunning = false;
                         }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
@@ -140,19 +178,31 @@ public class GameController{
                     try {
                         roomName = newRoom.getDirection().get("W");
 
-                        System.out.println("Switching to: " + roomName);
+                        if(roomName.equals("room4") && !userItems.getItems().contains("Shoe Room Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }else if(roomName.equals("room6") && !userItems.getItems().contains("Soft Slippers")){
+                            System.out.println("'There's someone there, I'll need to find a way to sneak through'");
+                            break;
+                        }else if(roomName.equals("room8") && !userItems.getItems().contains("Guard Room - Padlock Key")){
+                            System.out.println("Door's locked. Need to find a key.");
+                            break;
+                        }
+
+                        //System.out.println("Switching to: " + roomName);    // testing purposes
+
                         newRoom = new RoomData();
                         System.out.println("You are now in " + newRoom.nameOfRoom(roomName));
                         newRoom.setLongDescription(roomName);
                         newRoom.setShortDescription(roomName);
                         newRoom.roomItems(roomName);
                         newRoom.roomDirections(roomName);
-                        user.addRoom(roomName);
-                        if(user.getRooms().contains(roomName)){
-                            System.out.println(newRoom.getShortDescription());
-                        }else{
+                        if(!user.getRooms().contains(roomName)){
                             System.out.println(newRoom.getLongDescription());
                             user.addRoom(roomName);
+                        }
+                        if(roomName.equals("room8")){
+                            isRunning = false;
                         }
                     }catch (NullPointerException nullExc){
                         System.out.println("Can't go in that direction");
@@ -162,8 +212,12 @@ public class GameController{
                     if(newRoom.getItems()[0] == null){
                         System.out.println("No items in here");
                     }else{
-                        String item = newRoom.getItems()[0];
-                        userItems.addItems(user, item);
+                        if(roomName.equals("room7") && !userItems.getItems().contains("Flashlight")){
+                            System.out.println("'Can't see a thing, I'll need to find a way to brighten up the room'");
+                        }else {
+                            String item = newRoom.getItems()[0];
+                            userItems.addItems(user, item);
+                        }
                     }
                     break;
                 case "2":
