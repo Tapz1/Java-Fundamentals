@@ -1,7 +1,5 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
-
-
 import labs_examples.enumerations.labs.Direction;
 
 import java.lang.reflect.Array;
@@ -15,12 +13,10 @@ public class TextGame {
 
 class RoomData{
     Character user;
-    //RoomObjects roomObjects;
     private String roomName;
     private String longDescription;
     private String shortDescription;
     private String[] items = new String[1];
-    //private HashMap<String, Boolean> direction;
     private HashMap<String, String> direction = new HashMap<>();
 
 
@@ -98,21 +94,21 @@ class RoomData{
                 addDirection("S", null);
                 addDirection("E", "room2");
                 addDirection("W", "room3");
-                //return roomData.getDirection();
+
                 break;
             case "room2":
                 addDirection("N", null);
                 addDirection("S", null);
                 addDirection("E", null);
                 addDirection("W", "room1");
-                //return roomData.getDirection();
+
                 break;
             case "room3":
                 addDirection("N", "room4");
                 addDirection("S", null);
                 addDirection("E", "room1");
                 addDirection("W", null);
-                //return roomData.getDirection();
+
                 break;
             case "room4":
                 // no items
@@ -123,7 +119,7 @@ class RoomData{
                 addDirection("E", "room6");  // points to room 6
 
                 addDirection("W", null);
-                //return roomData.getDirection();
+
                 break;
             case "room5":
                 addDirection("N", null);
@@ -131,7 +127,7 @@ class RoomData{
 
                 addDirection("E", null);
                 addDirection("W", null);
-                //return roomData.getDirection();
+
                 break;
             case "room6":
                 addDirection("N", "room8"); // points to room 8 only if key is in inventory
@@ -141,7 +137,6 @@ class RoomData{
 
                 addDirection("W", "room4");  // points to room 4
 
-                //return roomData.getDirection();
                 break;
             case "room7":
                 addDirection("N", null);
@@ -149,18 +144,16 @@ class RoomData{
                 addDirection("E", null);
                 addDirection("W", "room6");  // points to room 6
 
-                //return roomData.getDirection();
                 break;
             case "room8":
                 addDirection("N", null);
                 addDirection("S", null);
                 addDirection("E", null);
                 addDirection("W", null);
-                //return roomData.getDirection();
+
 
                 break;
             default:
-                //return roomData.getDirection();
                 break;
         }
     }
@@ -308,12 +301,6 @@ class RoomData{
 
     }
 
-    public void setRoomItems(String room){
-
-    }
-
-
-
 
 
 }
@@ -324,9 +311,6 @@ class Character{
     private Items items;
     private ArrayList<String> rooms;
     private String location;
-    RoomData roomData;
-
-
 
     public Character(String name, Items items){
         this.name = name;
@@ -334,8 +318,6 @@ class Character{
         this.rooms = new ArrayList<>();
 
     }
-
-
 
     public void addRoom(String room) {
         this.rooms.add(room);
@@ -367,7 +349,7 @@ class Items{
     ArrayList<String> items = new ArrayList<>();
 
     public Items(){
-        //this.myItems = addItems();
+
     }
 
     public void addItems(Character user, String item){

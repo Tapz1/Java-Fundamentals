@@ -238,15 +238,13 @@ public class GameController{
                     break;
                 case "6":
                     isRunning = false;
+                    break;
                 default:
                     System.out.println("That wasn't a valid input.");
                     break;
             }
 
         }
-
-            //promptEnterKey();
-
     }
 
 
