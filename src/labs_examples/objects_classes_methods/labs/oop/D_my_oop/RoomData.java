@@ -1,17 +1,8 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
 
-import labs_examples.enumerations.labs.Direction;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TextGame {
-}
-
-
-
-class RoomData{
+public class RoomData {
     Character user;
     private String roomName;
     private String longDescription;
@@ -32,19 +23,19 @@ class RoomData{
                         "\ne = move east" +
                         "\ns = move south" +
                         "\nw = move west"
-                );
+        );
 
     }
 
     public void menu() {
         System.out.println(
                 "Enter a direction or choose an option: " +
-                "\n1. Search room" +
-                "\n2. View items" +
-                "\n3. Room name" +
-                "\n4. Room description" +
-                "\n5. Direction options" +
-                "\n6. Exit"
+                        "\n1. Search room" +
+                        "\n2. View items" +
+                        "\n3. Room name" +
+                        "\n4. Room description" +
+                        "\n5. Direction options" +
+                        "\n6. Exit"
         );
 
     }
@@ -301,74 +292,4 @@ class RoomData{
 
     }
 
-
-
 }
-
-
-class Character{
-    private String name;
-    private Items items;
-    private ArrayList<String> rooms;
-    private String location;
-
-    public Character(String name, Items items){
-        this.name = name;
-        this.items = items;
-        this.rooms = new ArrayList<>();
-
-    }
-
-    public void addRoom(String room) {
-        this.rooms.add(room);
-    }
-
-    public ArrayList<String> getRooms() {
-        return rooms;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-}
-
-
-class Items{
-    ArrayList<String> items = new ArrayList<>();
-
-    public Items(){
-
-    }
-
-    public void addItems(Character user, String item){
-        System.out.println(user.getName() + " received " + item);
-        this.items.add(item);
-    }
-
-    public ArrayList<String> getItems() {
-        return items;
-    }
-
-    public void printItems(){
-        System.out.println("Your inventory:");
-        for(String item : this.items){
-            System.out.println(item);
-        }
-    }
-}
-
-
-
-
